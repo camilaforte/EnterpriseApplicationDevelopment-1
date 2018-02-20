@@ -1,8 +1,7 @@
 package br.com.fiap.jpa.entity;
 
 import java.io.Serializable;
-import java.time.LocalDate;
-
+import java.util.Calendar;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
@@ -17,8 +16,10 @@ import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 import javax.persistence.Transient;
 
+//Em uma entidade (classe que sera uma tabela no banco) duas anotações são obrigatorias : Entity e Id
+
 @Entity
-@Table(name="T_ALUNO")
+@Table(name="T_EAD_ALUNO")
 @SequenceGenerator(name="aluno", sequenceName="SQ_T_ALUNO", allocationSize=1)
 public class Aluno implements Serializable {
 
@@ -26,7 +27,7 @@ public class Aluno implements Serializable {
 	
 	}
 	
-	public Aluno(String nome, String curso, LocalDate dataNascimento, boolean matriculado, Periodo periodo,
+	public Aluno(String nome, String curso, Calendar dataNascimento, boolean matriculado, Periodo periodo,
 			Integer semestre, String token, byte[] foto) {
 		super();
 		this.nome = nome;
@@ -51,7 +52,7 @@ public class Aluno implements Serializable {
 	private String curso;
 	@Column(name="dt_nascimento", nullable=false)
 	@Temporal(TemporalType.DATE) //utiliza somente a data para gravar no banco, se por TIMESTAMP pega a data e a hora, se for TIME pega somento a hora 
-	private LocalDate dataNascimento;
+	private Calendar dataNascimento;
 	@Column(name="st_matriculado", nullable=false)
 	private boolean matriculado;
 	@Column(name="ds_periodo")
@@ -68,7 +69,7 @@ public class Aluno implements Serializable {
 	@Transient //serve para nao gravar no banco, eh um atributo que sera usado no meu sistema mas nao ha necessidade de gravar ele no banco
 	private String token;
 
-	@Lob //gravar arquivo no banco
+	@Lob //gravar arquivo no banco (BLOB no banco)
 	@Column(name="fl_foto")
 	private byte[] foto;
 
@@ -96,11 +97,11 @@ public class Aluno implements Serializable {
 		this.curso = curso;
 	}
 
-	public LocalDate getDataNascimento() {
+	public Calendar getDataNascimento() {
 		return dataNascimento;
 	}
 
-	public void setDataNascimento(LocalDate dataNascimento) {
+	public void setDataNascimento(Calendar dataNascimento) {
 		this.dataNascimento = dataNascimento;
 	}
 
