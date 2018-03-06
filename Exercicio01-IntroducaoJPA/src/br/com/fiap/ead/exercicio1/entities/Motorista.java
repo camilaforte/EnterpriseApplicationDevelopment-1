@@ -16,7 +16,7 @@ import javax.persistence.TemporalType;
 public class Motorista {
 
 	@Id
-	private long numeroCarteira;
+	private int numeroCarteira;
 	
 	@Column(name="nm_motorista", nullable=false, length=150)
 	private String nome;
@@ -37,7 +37,7 @@ public class Motorista {
 
 	}
 
-	public Motorista(long numeroCarteira, String nome, Calendar dataNascimento, byte[] foto, Genero genero) {
+	public Motorista(int numeroCarteira, String nome, Calendar dataNascimento, byte[] foto, Genero genero) {
 		this.numeroCarteira = numeroCarteira;
 		this.nome = nome;
 		this.dataNascimento = dataNascimento;
@@ -49,7 +49,7 @@ public class Motorista {
 		return numeroCarteira;
 	}
 
-	public void setNumeroCarteira(long numeroCarteira) {
+	public void setNumeroCarteira(int numeroCarteira) {
 		this.numeroCarteira = numeroCarteira;
 	}
 
