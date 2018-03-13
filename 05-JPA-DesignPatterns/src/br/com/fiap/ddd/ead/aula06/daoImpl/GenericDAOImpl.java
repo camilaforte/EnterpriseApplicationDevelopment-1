@@ -36,6 +36,7 @@ public class GenericDAOImpl<T, K> implements GenericDAO<T, K> {
 		if (entidade == null) {
 			throw new KeyNotFoundException();
 		}
+		em.remove(entidade);
 	}
 
 	@Override
