@@ -8,11 +8,10 @@ import javax.persistence.Id;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
-@Entity 
+@Entity
 @Table (name = "T_EAD2_LIVRO")
 @SequenceGenerator(name = "livro", sequenceName = "SQ_T_LIVRO", allocationSize = 1)
 public class Livro {
-
 	
 	@Id
 	@Column (name = "cd_livro")
@@ -25,6 +24,7 @@ public class Livro {
 	@Column (name = "nm_autor", nullable = false, length = 150)
 	private String autor;
 	
+	public Livro() { }
 	
 	public Livro(String titulo, String autor) {
 		super();
