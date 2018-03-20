@@ -1,13 +1,17 @@
 package br.com.fiap.ads.ead.aula06.entities;
 
+import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
+import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
@@ -31,8 +35,11 @@ public class Pedido {
 	@Column(name="ds_pedido", nullable=false, length=300)
 	private String descricao;
 	
-	@OneToOne(mappedBy="pedido")
+	@OneToOne(mappedBy="pedido", fetch=FetchType.LAZY)
 	private NotaFiscal notaFiscal;
+	
+	@OneToMany(mappedBy="pedido", cascade= {CascadeType.PERSIST, CascadeType.REMOVE})
+	private List<ItemPedido> itens = new ArrayList<>();
 	
 	public Pedido() { }
 
@@ -40,6 +47,11 @@ public class Pedido {
 		super();
 		this.data = data;
 		this.descricao = descricao;
+	}
+
+	public void adicionarItem(ItemPedido item) {
+		itens.add(item);
+		item.setPedido(this);
 	}
 
 	public int getCodigo() {
