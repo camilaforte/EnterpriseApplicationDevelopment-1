@@ -1,12 +1,20 @@
 package br.com.fiap.ads.ead.entities;
 
 import java.util.Calendar;
+import java.util.List;
+
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
+import javax.persistence.FetchType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
 import javax.persistence.Lob;
+import javax.persistence.ManyToMany;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
@@ -33,6 +41,14 @@ public class Motorista {
 	@Column(name="ds_genero")
 	@Enumerated(EnumType.STRING)
 	private Genero genero;
+	
+	@ManyToMany(cascade= {CascadeType.PERSIST, CascadeType.REMOVE}, fetch=FetchType.LAZY)
+	@JoinTable(name="T_EAD_VEICULO_MOTORISTA", 
+	joinColumns=@JoinColumn(name="cd_motorista"), inverseJoinColumns=@JoinColumn(name="cd_veiculo"))
+	private List<Veiculo> veiculos;
+	
+	@OneToMany(mappedBy="motorista", cascade= {CascadeType.PERSIST, CascadeType.REMOVE}, fetch=FetchType.LAZY)
+	private List<Corrida> corridas;
 	
 	public Motorista() {
 
@@ -84,6 +100,22 @@ public class Motorista {
 
 	public void setGenero(Genero genero) {
 		this.genero = genero;
+	}
+
+	public List<Veiculo> getVeiculos() {
+		return veiculos;
+	}
+
+	public void setVeiculos(List<Veiculo> veiculos) {
+		this.veiculos = veiculos;
+	}
+
+	public List<Corrida> getCorridas() {
+		return corridas;
+	}
+
+	public void setCorridas(List<Corrida> corridas) {
+		this.corridas = corridas;
 	}
 	
 }

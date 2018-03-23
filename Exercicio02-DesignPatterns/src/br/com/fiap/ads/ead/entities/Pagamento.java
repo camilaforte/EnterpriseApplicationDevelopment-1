@@ -9,6 +9,7 @@ import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToOne;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
@@ -35,6 +36,9 @@ public class Pagamento {
 	@Enumerated(EnumType.STRING)
 	private TipoPagamento formaPagamento;
 
+	@OneToOne(mappedBy="pagamento")
+	private Corrida corrida;
+	
 	public Pagamento() { }
 	
 	public Pagamento(Calendar dataPagamento, float valorPagamento, TipoPagamento formaPagamento) {
@@ -75,5 +79,13 @@ public class Pagamento {
 	public void setFormaPagamento(TipoPagamento formaPagamento) {
 		this.formaPagamento = formaPagamento;
 	}
-	
+
+	public Corrida getCorrida() {
+		return corrida;
+	}
+
+	public void setCorrida(Corrida corrida) {
+		this.corrida = corrida;
+	}
+
 }

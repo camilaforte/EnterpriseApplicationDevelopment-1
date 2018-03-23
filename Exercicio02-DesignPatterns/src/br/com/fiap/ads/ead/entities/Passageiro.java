@@ -1,13 +1,18 @@
 package br.com.fiap.ads.ead.entities;
 
 import java.util.Calendar;
+import java.util.List;
+
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
@@ -33,6 +38,9 @@ public class Passageiro {
 	@Column(name="ds_genero")
 	@Enumerated(EnumType.STRING)
 	private Genero genero;
+	
+	@OneToMany(mappedBy="passageiro", fetch=FetchType.LAZY, cascade=CascadeType.PERSIST)
+	private List<Corrida> corridas;
 	
 	public Passageiro() { }
 
@@ -73,6 +81,14 @@ public class Passageiro {
 
 	public void setGenero(Genero genero) {
 		this.genero = genero;
+	}
+
+	public List<Corrida> getCorridas() {
+		return corridas;
+	}
+
+	public void setCorridas(List<Corrida> corridas) {
+		this.corridas = corridas;
 	}
 
 }

@@ -7,6 +7,9 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToOne;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
@@ -34,7 +37,19 @@ public class Corrida {
 
 	@Column(name="vl_corrida", nullable=false)
 	private float valorCorrida;
-
+	
+	@ManyToOne
+	@JoinColumn(name="cd_motorista", nullable=false)
+	private Motorista motorista;
+	
+	@ManyToOne
+	@JoinColumn(name="cd_passageiro", nullable=false)
+	private Passageiro passageiro;
+	
+	@OneToOne
+	@JoinColumn(name="cd_pagamento")
+	private Pagamento pagamento;
+	
 	public Corrida() { }
 	
 	public Corrida(String origem, String destino, Calendar dataCorrida, float valorCorrida) {
@@ -83,6 +98,30 @@ public class Corrida {
 
 	public void setValorCorrida(float valorCorrida) {
 		this.valorCorrida = valorCorrida;
+	}
+
+	public Motorista getMotorista() {
+		return motorista;
+	}
+
+	public void setMotorista(Motorista motorista) {
+		this.motorista = motorista;
+	}
+
+	public Passageiro getPassageiro() {
+		return passageiro;
+	}
+
+	public void setPassageiro(Passageiro passageiro) {
+		this.passageiro = passageiro;
+	}
+
+	public Pagamento getPagamento() {
+		return pagamento;
+	}
+
+	public void setPagamento(Pagamento pagamento) {
+		this.pagamento = pagamento;
 	}
 	
 }
