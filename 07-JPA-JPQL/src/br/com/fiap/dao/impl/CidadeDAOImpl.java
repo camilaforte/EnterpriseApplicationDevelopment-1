@@ -14,17 +14,29 @@ public class CidadeDAOImpl extends GenericDAOImpl<Cidade,Integer> implements Cid
 		super(entityManager);
 	}
 
-//	@Override
-//	public List<Cidade> listar() {
-//		TypedQuery<Cidade> query = em.createQuery("FROM Cidade", Cidade.class);
-//		return query.getResultList();
-//	}
+	@Override
+	public List<Cidade> listar() {
+		//Criar a query
+		TypedQuery<Cidade> query = em.createQuery(
+			"from Cidade",Cidade.class);
+		//Executar a query		
+		return query.getResultList();
+	}
 
 	@Override
 	public List<Cidade> buscarPorNome(String nome) {
-		TypedQuery<Cidade> query = em.createQuery("FROM Cidade c WHERE c.nome LIKE :nomeCidade", Cidade.class);
-		query.setParameter("nomeCidade", "%" + nome + "%");
+		//Criar a query
+		TypedQuery<Cidade> query = em.createQuery(
+			"from Cidade c where c.nome like :nomeCidade",Cidade.class);
+		//Passar o parametro para a query
+		query.setParameter("nomeCidade", "%"+nome+"%");
+		//Executar a query
 		return query.getResultList();
 	}
 
 }
+
+
+
+
+
