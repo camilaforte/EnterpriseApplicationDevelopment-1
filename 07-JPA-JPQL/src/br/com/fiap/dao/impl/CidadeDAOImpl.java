@@ -1,5 +1,6 @@
 package br.com.fiap.dao.impl;
 
+import java.util.Collection;
 import java.util.List;
 
 import javax.persistence.EntityManager;
@@ -15,15 +16,6 @@ public class CidadeDAOImpl extends GenericDAOImpl<Cidade,Integer> implements Cid
 	}
 
 	@Override
-	public List<Cidade> listar() {
-		//Criar a query
-		TypedQuery<Cidade> query = em.createQuery(
-			"from Cidade",Cidade.class);
-		//Executar a query		
-		return query.getResultList();
-	}
-
-	@Override
 	public List<Cidade> buscarPorNome(String nome) {
 		//Criar a query
 		TypedQuery<Cidade> query = em.createQuery(
@@ -31,6 +23,13 @@ public class CidadeDAOImpl extends GenericDAOImpl<Cidade,Integer> implements Cid
 		//Passar o parametro para a query
 		query.setParameter("nomeCidade", "%"+nome+"%");
 		//Executar a query
+		return query.getResultList();
+	}
+
+	@Override
+	public List<Cidade> buscarPorEstados(Collection<String> estados) {
+		TypedQuery<Cidade> query = em.createQuery("FROM Cidade c WHERE c.uf IN (:pEstados)", Cidade.class);
+		query.setParameter("pEstados", estados);
 		return query.getResultList();
 	}
 

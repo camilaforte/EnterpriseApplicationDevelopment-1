@@ -14,6 +14,14 @@ public class ClienteDAOImpl extends GenericDAOImpl<Cliente,Integer> implements C
 		super(entityManager);
 	}
 
+	@Override
+	public List<Cliente> buscar(String nome, String cidade) {
+		TypedQuery<Cliente> query = em.createQuery("FROM Cliente c WHERE c.nome LIKE :pNome AND c.endereco.cidade.nome LIKE :pNomeCidade", Cliente.class);
+		query.setParameter("pNome", "%" + nome + "%");
+		query.setParameter("pNomeCidade", "%" + cidade + "%");
+		return query.getResultList();
+	}
+
 }
 
 
