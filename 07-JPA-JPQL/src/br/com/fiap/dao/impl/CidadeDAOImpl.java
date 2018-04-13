@@ -19,7 +19,7 @@ public class CidadeDAOImpl extends GenericDAOImpl<Cidade,Integer> implements Cid
 	public List<Cidade> buscarPorNome(String nome) {
 		//Criar a query
 		TypedQuery<Cidade> query = em.createQuery(
-			"from Cidade c where c.nome like :nomeCidade",Cidade.class);
+			"from Cidade c where upper(c.nome) like :nomeCidade",Cidade.class);
 		//Passar o parametro para a query
 		query.setParameter("nomeCidade", "%"+nome+"%");
 		//Executar a query

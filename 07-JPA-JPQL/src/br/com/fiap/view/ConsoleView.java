@@ -12,9 +12,11 @@ import br.com.fiap.dao.CidadeDAO;
 import br.com.fiap.dao.ClienteDAO;
 import br.com.fiap.dao.EntityManagerFactorySingleton;
 import br.com.fiap.dao.PacoteDAO;
+import br.com.fiap.dao.ReservaDAO;
 import br.com.fiap.dao.impl.CidadeDAOImpl;
 import br.com.fiap.dao.impl.ClienteDAOImpl;
 import br.com.fiap.dao.impl.PacoteDAOImpl;
+import br.com.fiap.dao.impl.ReservaDAOImpl;
 import br.com.fiap.entity.Cidade;
 import br.com.fiap.entity.Cliente;
 import br.com.fiap.entity.Pacote;
@@ -70,6 +72,14 @@ public class ConsoleView {
 		for (Cidade cidade : cidadesPorEstados) {
 			System.out.println(cidade.getNome());
 		}
+
+		System.out.println("\n===============================================================");
+		System.out.println("\n===============================================================");
+		//criar a reservadao
+		ReservaDAO reservaDAO = new ReservaDAOImpl(em);
+		
+		System.out.println(reservaDAO.contarQuantidade());
+		
 		
 		em.close();
 		fabrica.close();
