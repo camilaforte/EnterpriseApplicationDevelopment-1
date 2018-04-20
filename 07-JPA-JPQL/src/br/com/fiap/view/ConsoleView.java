@@ -80,6 +80,26 @@ public class ConsoleView {
 		
 		System.out.println(reservaDAO.contarQuantidade());
 		
+		Calendar inicio = new GregorianCalendar(2015, Calendar.JANUARY, 1);
+		Calendar fim = new GregorianCalendar(2018, Calendar.MAY, 2);
+		
+		long qtdPorData = reservaDAO.contarPorDatas(inicio, fim);
+		
+		System.out.println("Nesse periodo teve: " + qtdPorData);
+		
+		long qtdPorEstado = reservaDAO.contarPorEstadoCliente("PR");
+		
+		System.out.println("Por estado cliente: " + qtdPorEstado);
+
+		List<Pacote> listaPacote = pacoteDAO.buscarPorDestino("al");
+		
+		for (Pacote pacote : listaPacote) {
+			System.out.println("Destino do pacote: " + pacote.getDescricao());
+		}
+
+		long qtdTrasnporte = pacoteDAO.contarPorTrasnporte();
+		
+		System.out.println("Qtd por transporte (pacote): " + qtdTrasnporte);
 		
 		em.close();
 		fabrica.close();

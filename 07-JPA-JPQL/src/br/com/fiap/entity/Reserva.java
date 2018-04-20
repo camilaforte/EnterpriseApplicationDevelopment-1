@@ -9,6 +9,8 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
+import javax.persistence.NamedQueries;
+import javax.persistence.NamedQuery;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
@@ -17,6 +19,12 @@ import javax.persistence.TemporalType;
 @Entity
 @Table(name="JPA_T_RESERVA")
 @SequenceGenerator(name="seqReserva", sequenceName="SEQ_JPA_T_RESERVA", allocationSize=1)
+@NamedQueries({
+	@NamedQuery(name = "Reserva.contarPorDatas", query="SELECT count(r) FROM Reserva r WHERE r.dataReserva "
+			+ "BETWEEN :pInicio AND :pFim"),
+	@NamedQuery(name = "Reserva.contarPorEstadoCliente", query="SELECT count(r) FROM Reserva r WHERE "
+			+ "r.cliente.endereco.cidade.uf = :pUf")
+})
 public class Reserva {
 
 	@Id

@@ -9,6 +9,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
+import javax.persistence.NamedQuery;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
@@ -17,6 +18,7 @@ import javax.persistence.TemporalType;
 @Entity
 @Table(name="JPA_T_PACOTE")
 @SequenceGenerator(name="seqPacote", sequenceName="SEQ_JPA_T_PACOTE", allocationSize=1)
+@NamedQuery(name="Pacote.contarPorTrasnporte", query="SELECT COUNT(p) FROM Pacote p WHERE p.transporte IS NOT NULL")
 public class Pacote {
 
 	@Id
