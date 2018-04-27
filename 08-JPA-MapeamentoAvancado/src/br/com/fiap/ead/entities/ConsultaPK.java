@@ -80,8 +80,5 @@ public class ConsultaPK implements Serializable {
 			return false;
 		return true;
 	}
-
-	
-	
 	
 }
