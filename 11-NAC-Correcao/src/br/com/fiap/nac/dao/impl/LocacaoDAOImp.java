@@ -18,8 +18,16 @@ public class LocacaoDAOImp extends GenericDAOImpl<Locacao, Integer> implements L
 	@Override
 	public List<Locacao> buscarLocacaoPorData(Calendar inicio, Calendar fim) {
 
-		return em.createQuery("SELECT l FROM Locacao l where l.dataInicio BETWEEN :pInicio AND :pFim", Locacao.class).
-				setParameter("pInicio", inicio).setParameter("pFim", fim).getResultList();
+		return em.createQuery("FROM Locacao l where l.dataInicio BETWEEN :pInicio AND :pFim", Locacao.class).
+				setParameter("pInicio", inicio).
+				setParameter("pFim", fim).
+				getResultList();
+	}
+
+	@Override
+	public long quantidadeDeLocacoesPorCliente(int codigoCliente) {
+		return em.createQuery("SELECT COUNT(l) FROM Locacao l WHERE l.cliente.codigo = :pCodigoCliente", Long.class).
+				setParameter("pCodigoCliente", codigoCliente).getSingleResult();
 	}
 
 }
