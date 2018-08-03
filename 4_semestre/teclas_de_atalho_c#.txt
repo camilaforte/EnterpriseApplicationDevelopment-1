@@ -1,0 +1,5 @@
+Teclas de atalho
+
+CONTROL + L --> apaga linha
+ALT + ENTER --> importa Classe
+CONTROL + SHIFT + A --> criar uma nova classe
