@@ -13,7 +13,7 @@ namespace _01.Fiap.HelloWorld.Console.UI
         {
 
             // Instanciar um objeto
-            Carro c = new Carro();
+            Carro c = new Carro(2010, 2.0);
             c.Ano = 2010; // este eh o SET
             c.ArCondicionado = false; // SET
 
@@ -21,15 +21,13 @@ namespace _01.Fiap.HelloWorld.Console.UI
             System.Console.WriteLine("Alooouuu C#!");
 
             // instanciando outro objeto ja passando os valores no contrutor
-            Lancha lancha = new Lancha()
+            Lancha lancha = new Lancha(2019, 140)
             {
-                Ano = 2018,
                 BoiaSalvaVida = true,
-                Potencia = 1000
             };
 
             // as variaveis sao tipadas por inferencia
-            var lancha2 = new Lancha()
+            var lancha2 = new Lancha(2000, 150)
             {
                 Ano = 2000
             };

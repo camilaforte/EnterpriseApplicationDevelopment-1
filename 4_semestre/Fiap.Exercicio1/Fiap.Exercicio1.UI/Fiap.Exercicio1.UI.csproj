@@ -4,10 +4,10 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{5F9BE5A2-807E-42C2-B4DF-7CDA5E6F9636}</ProjectGuid>
+    <ProjectGuid>{A8036713-5AAF-4DCE-A893-B9756B040DF0}</ProjectGuid>
     <OutputType>Exe</OutputType>
-    <RootNamespace>_01.Fiap.HelloWorld.Console.UI</RootNamespace>
-    <AssemblyName>01.Fiap.HelloWorld.Console.UI</AssemblyName>
+    <RootNamespace>Fiap.Exercicio1.UI</RootNamespace>
+    <AssemblyName>Fiap.Exercicio1.UI</AssemblyName>
     <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
@@ -42,11 +42,11 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Model\Carro.cs" />
-    <Compile Include="Model\IAquatico.cs" />
-    <Compile Include="Model\TipoCarro.cs" />
-    <Compile Include="Model\Lancha.cs" />
-    <Compile Include="Model\Veiculo.cs" />
+    <Compile Include="Interfaces\IContaInvestimento.cs" />
+    <Compile Include="Model\Conta.cs" />
+    <Compile Include="Model\ContaCorrente.cs" />
+    <Compile Include="Model\Interface1.cs" />
+    <Compile Include="Model\TipoConta.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
