@@ -8,17 +8,18 @@ using System.Threading.Tasks;
 
 namespace Fiap.Banco.Model
 {
-    public class ContaCorrente : Conta
+    // se eu nao puser nenhum modificador de acesso a classe fica como internal
+    public sealed class ContaCorrente : Conta
     {
 
         public TipoConta Tipo { get; set; }
 
-        public override void Depositar(double valor)
+        public override void Depositar(decimal valor)
         {
-            Saldo = valor;
+            Saldo += valor;
         }
 
-        public override void Retirar(double valor)
+        public override void Retirar(decimal valor)
         {
 
             if (Tipo == TipoConta.Comum && Saldo < valor)
@@ -27,8 +28,8 @@ namespace Fiap.Banco.Model
             }
 
             Saldo -= valor;
-
         }
 
     }
+
 }

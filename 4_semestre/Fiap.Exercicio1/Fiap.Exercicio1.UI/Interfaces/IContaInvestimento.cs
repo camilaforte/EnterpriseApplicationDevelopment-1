@@ -4,12 +4,13 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Fiap.Exercicio1.UI.Interfaces
+namespace Fiap.Banco.Interfaces
 {
+    // Interfaces devem comecar sempre com I na frente do nome. Eh o padrao C#.
     interface IContaInvestimento
     {
 
-        double CalcularRetornoInvestimento();
+        decimal CalcularRetornoInvestimento();
 
     }
 

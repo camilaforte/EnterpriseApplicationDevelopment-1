@@ -43,11 +43,12 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Interfaces\IContaInvestimento.cs" />
+    <Compile Include="Main\Program.cs" />
+    <Compile Include="Model\ContaPoupanca.cs" />
     <Compile Include="Model\Conta.cs" />
     <Compile Include="Model\ContaCorrente.cs" />
     <Compile Include="Model\Interface1.cs" />
     <Compile Include="Model\TipoConta.cs" />
-    <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
