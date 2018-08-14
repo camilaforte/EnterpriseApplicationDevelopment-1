@@ -7,3 +7,5 @@ CONTROL + ALT + pageup ou pagedown --> navega entre as abas das classes
 CONTROL + F4 --> fecha a classe atual
 cw + tab 2x --> escreve o snippet do Console.WriteLine();
 ctor + tab 2x --> cria o construtor da classe
+control + K + C --> comenta o codigo
+control + K + U --> descomenta o codigo
