@@ -1,0 +1,49 @@
+﻿@model List<Fiap06.Wbe.MVC.Models.Animal>
+
+@{
+    ViewBag.Title = "Listar";
+}
+
+<h2>Listar</h2>
+
+
+@if (TempData["msg"] != null)
+{
+    <div class="alert alert-success alert-dismissible" role="alert">
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+        </button>
+        <strong>@TempData["msg"]</strong>
+    </div>
+}
+
+<table class="table table-striped">
+
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>NOME</th>
+            <th>RAÇA</th>
+            <th>CASTRADO</th>
+            <th>PESO</th>
+            <th>AÇÕES</th>
+        </tr>
+    </thead>
+
+    @foreach (var animal in Model)
+    {
+
+        <tr>
+            <td>@animal.AnimalId</td>
+            <td>@animal.Nome</td>
+            <td>@animal.Raca</td>
+            <td>@(animal.Castrado ? "Sim" : "Não")</td>
+            <td>@animal.Peso</td>
+            <td>
+                @Html.ActionLink(" ", "Alterar", new { id = animal.AnimalId }, new { @class = "glyphicon glyphicon-pencil" })
+            </td>
+        </tr>
+
+    }
+
+</table>
