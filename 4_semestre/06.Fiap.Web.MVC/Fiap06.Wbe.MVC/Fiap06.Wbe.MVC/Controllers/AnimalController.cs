@@ -55,6 +55,23 @@ namespace Fiap06.Wbe.MVC.Controllers
             TempData["msg"] = "Animal editado com sucesso!";
             return RedirectToAction("Listar");
         }
+    
+        [HttpPost]
+        public ActionResult Remover(int codigo)
+        {
+            _context.Animais.Remove(_context.Animais.Find(codigo));
+            _context.SaveChanges();
+            TempData["msg"] = "Animal excluído com sucesso";
+            return RedirectToAction("Listar");
+        }
+
+        [HttpGet]
+        public ActionResult Pesquisar(string nome)
+        {
+
+            List<Animal> animais = _context.Animais.Where(a => a.Nome.Contains(nome) || a.Raca.Contains(nome)).ToList();
+            return View("Listar", animais);
+        }
 
     }
 
